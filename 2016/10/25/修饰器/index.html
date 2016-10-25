@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+  <title>修饰器 | Ailley的博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="类的修饰修饰器（Decorator）是一个函数，用来修改类的行为。这是ES7的一个提案，目前Babel转码器已经支持。
+修饰器对类的行为的改变，是代码编译时发生的，而不是在运行时。这意味着，修饰器能在编译阶段运行代码。
+12345678function testable(target) &amp;#123;  target.isTestable = true;&amp;#125;@testableclass My">
+<meta property="og:type" content="article">
+<meta property="og:title" content="修饰器">
+<meta property="og:url" content="https://ailley.github.io/2016/10/25/修饰器/index.html">
+<meta property="og:site_name" content="Ailley的博客">
+<meta property="og:description" content="类的修饰修饰器（Decorator）是一个函数，用来修改类的行为。这是ES7的一个提案，目前Babel转码器已经支持。
+修饰器对类的行为的改变，是代码编译时发生的，而不是在运行时。这意味着，修饰器能在编译阶段运行代码。
+12345678function testable(target) &amp;#123;  target.isTestable = true;&amp;#125;@testableclass My">
+<meta property="og:updated_time" content="2016-10-25T01:37:05.257Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="修饰器">
+<meta name="twitter:description" content="类的修饰修饰器（Decorator）是一个函数，用来修改类的行为。这是ES7的一个提案，目前Babel转码器已经支持。
+修饰器对类的行为的改变，是代码编译时发生的，而不是在运行时。这意味着，修饰器能在编译阶段运行代码。
+12345678function testable(target) &amp;#123;  target.isTestable = true;&amp;#125;@testableclass My">
+  
+    <link rel="alternative" href="/atom.xml" title="Ailley的博客" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="//img/ailley.jpg">
+  
+  <script src="/style.js"></script>
+</head>
+
+<body>
+  <div id="container">
+    <div class="left-col">
+      <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img src="/img/ailley.jpg" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">Ailley</a></h1>
+		</hgroup>
+
+		
+
+		<nav class="header-menu">
+			<ul>
+			
+				<li><a href="/">主页</a></li>
+	        
+			</ul>
+		</nav>
+		<nav class="header-smart-menu">
+	        
+    		
+    			
+    			<a class="js-smart-menu" data-idx="0" href="javascript:void(0)">所有文章</a>
+    			
+    			
+            
+    			
+    			<a class="js-smart-menu" data-idx="1" href="javascript:void(0)">标签</a>
+    			
+    			
+            
+    			
+    			<a class="js-smart-menu" data-idx="2" href="javascript:void(0)">友链</a>
+    			
+    			
+            
+    			
+    			<a class="js-smart-menu" data-idx="3" href="javascript:void(0)">关于我</a>
+    			
+    			
+            
+		</nav>
+		<nav class="header-nav">
+			<div class="social">
+				
+					<a class="github" target="_blank" href="https://github.com/ailley" title="github">github</a>
+		        
+					<a class="weibo" target="_blank" href="http://weibo.com/u/5500820592?refer_flag=1001030102_&is_all=1#_loginLayer_1474693745212" title="weibo">weibo</a>
+		        
+					<a class="rss" target="_blank" href="/atom.xml" title="rss">rss</a>
+		        
+			</div>
+		</nav>
+	</header>		
+</div>
+
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"><i class="icon-list"></i></div>
+  		<h1 class="header-author js-mobile-header hide">Ailley</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				
+					<img src="/img/ailley.jpg" class="js-avatar">
+				
+			</div>
+			<hgroup>
+			  <h1 class="header-author">Ailley</h1>
+			</hgroup>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/ailley" title="github">github</a>
+			        
+						<a class="weibo" target="_blank" href="http://weibo.com/u/5500820592?refer_flag=1001030102_&is_all=1#_loginLayer_1474693745212" title="weibo">weibo</a>
+			        
+						<a class="rss" target="_blank" href="/atom.xml" title="rss">rss</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+
+      <div class="body-wrap">
+        <article id="post-修饰器" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      修饰器
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="类的修饰"><a href="#类的修饰" class="headerlink" title="类的修饰"></a>类的修饰</h2><p>修饰器（Decorator）是一个函数，用来修改类的行为。这是ES7的一个<a href="https://github.com/wycats/javascript-decorators" target="_blank" rel="external">提案</a>，目前Babel转码器已经支持。</p>
+<p>修饰器对类的行为的改变，是代码编译时发生的，而不是在运行时。这意味着，修饰器能在编译阶段运行代码。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">testable</span>(<span class="params">target</span>) </span>&#123;</div><div class="line">  target.isTestable = <span class="literal">true</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line">@testable</div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyTestableClass</span> </span>&#123;&#125;</div><div class="line"></div><div class="line"><span class="built_in">console</span>.log(MyTestableClass.isTestable) <span class="comment">// true</span></div></pre></td></tr></table></figure>
+<p>上面代码中，<code>@testable</code>就是一个修饰器。它修改了<code>MyTestableClass</code>这个类的行为，为它加上了静态属性<code>isTestable</code>。</p>
+<p>基本上，修饰器的行为就是下面这样。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">@decorator</div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">A</span> </span>&#123;&#125;</div><div class="line"></div><div class="line"><span class="comment">// 等同于</span></div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">A</span> </span>&#123;&#125;</div><div class="line">A = decorator(A) || A;</div></pre></td></tr></table></figure>
+<p>也就是说，修饰器本质就是编译时执行的函数。</p>
+<p>修饰器函数的第一个参数，就是所要修饰的目标类。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">testable</span>(<span class="params">target</span>) </span>&#123;</div><div class="line">  <span class="comment">// ...</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>上面代码中，<code>testable</code>函数的参数<code>target</code>，就是会被修饰的类。<br><a id="more"></a><br>如果觉得一个参数不够用，可以在修饰器外面再封装一层函数。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">testable</span>(<span class="params">isTestable</span>) </span>&#123;</div><div class="line">  <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params">target</span>) </span>&#123;</div><div class="line">    target.isTestable = isTestable;</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">@testable(<span class="literal">true</span>)</div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyTestableClass</span> </span>&#123;&#125;</div><div class="line">MyTestableClass.isTestable <span class="comment">// true</span></div><div class="line"></div><div class="line">@testable(<span class="literal">false</span>)</div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyClass</span> </span>&#123;&#125;</div><div class="line">MyClass.isTestable <span class="comment">// false</span></div></pre></td></tr></table></figure>
+<p>上面代码中，修饰器<code>testable</code>可以接受参数，这就等于可以修改修饰器的行为。</p>
+<p>前面的例子是为类添加一个静态属性，如果想添加实例属性，可以通过目标类的<code>prototype</code>对象操作。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">testable</span>(<span class="params">target</span>) </span>&#123;</div><div class="line">  target.prototype.isTestable = <span class="literal">true</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line">@testable</div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyTestableClass</span> </span>&#123;&#125;</div><div class="line"></div><div class="line"><span class="keyword">let</span> obj = <span class="keyword">new</span> MyTestableClass();</div><div class="line">obj.isTestable <span class="comment">// true</span></div></pre></td></tr></table></figure>
+<p>上面代码中，修饰器函数<code>testable</code>是在目标类的<code>prototype</code>对象上添加属性，因此就可以在实例上调用。</p>
+<p>下面是另外一个例子。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// mixins.js</span></div><div class="line"><span class="keyword">export</span> <span class="function"><span class="keyword">function</span> <span class="title">mixins</span>(<span class="params">...list</span>) </span>&#123;</div><div class="line">  <span class="keyword">return</span> <span class="function"><span class="keyword">function</span> (<span class="params">target</span>) </span>&#123;</div><div class="line">    <span class="built_in">Object</span>.assign(target.prototype, ...list)</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// main.js</span></div><div class="line"><span class="keyword">import</span> &#123; mixins &#125; <span class="keyword">from</span> <span class="string">'./mixins'</span></div><div class="line"></div><div class="line"><span class="keyword">const</span> Foo = &#123;</div><div class="line">  foo() &#123; <span class="built_in">console</span>.log(<span class="string">'foo'</span>) &#125;</div><div class="line">&#125;;</div><div class="line"></div><div class="line">@mixins(Foo)</div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyClass</span> </span>&#123;&#125;</div><div class="line"></div><div class="line"><span class="keyword">let</span> obj = <span class="keyword">new</span> MyClass();</div><div class="line">obj.foo() <span class="comment">// 'foo'</span></div></pre></td></tr></table></figure>
+<p>上面代码通过修饰器<code>mixins</code>，把<code>Foo</code>类的方法添加到了<code>MyClass</code>的实例上面。可以用<code>Object.assign()</code>模拟这个功能。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> Foo = &#123;</div><div class="line">  foo() &#123; <span class="built_in">console</span>.log(<span class="string">'foo'</span>) &#125;</div><div class="line">&#125;;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyClass</span> </span>&#123;&#125;</div><div class="line"></div><div class="line"><span class="built_in">Object</span>.assign(MyClass.prototype, Foo);</div><div class="line"></div><div class="line"><span class="keyword">let</span> obj = <span class="keyword">new</span> MyClass();</div><div class="line">obj.foo() <span class="comment">// 'foo'</span></div></pre></td></tr></table></figure>
+<h2 id="方法的修饰"><a href="#方法的修饰" class="headerlink" title="方法的修饰"></a>方法的修饰</h2><p>修饰器不仅可以修饰类，还可以修饰类的属性。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Person</span> </span>&#123;</div><div class="line">  @readonly</div><div class="line">  name() &#123; <span class="keyword">return</span> <span class="string">`<span class="subst">$&#123;<span class="keyword">this</span>.first&#125;</span> <span class="subst">$&#123;<span class="keyword">this</span>.last&#125;</span>`</span> &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>上面代码中，修饰器<code>readonly</code>用来修饰“类”的<code>name</code>方法。</p>
+<p>此时，修饰器函数一共可以接受三个参数，第一个参数是所要修饰的目标对象，第二个参数是所要修饰的属性名，第三个参数是该属性的描述对象。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">readonly</span>(<span class="params">target, name, descriptor</span>)</span>&#123;</div><div class="line">  <span class="comment">// descriptor对象原来的值如下</span></div><div class="line">  <span class="comment">// &#123;</span></div><div class="line">  <span class="comment">//   value: specifiedFunction,</span></div><div class="line">  <span class="comment">//   enumerable: false,</span></div><div class="line">  <span class="comment">//   configurable: true,</span></div><div class="line">  <span class="comment">//   writable: true</span></div><div class="line">  <span class="comment">// &#125;;</span></div><div class="line">  descriptor.writable = <span class="literal">false</span>;</div><div class="line">  <span class="keyword">return</span> descriptor;</div><div class="line">&#125;</div><div class="line"></div><div class="line">readonly(Person.prototype, <span class="string">'name'</span>, descriptor);</div><div class="line"><span class="comment">// 类似于</span></div><div class="line"><span class="built_in">Object</span>.defineProperty(Person.prototype, <span class="string">'name'</span>, descriptor);</div></pre></td></tr></table></figure>
+<p>上面代码说明，修饰器（readonly）会修改属性的描述对象（descriptor），然后被修改的描述对象再用来定义属性。</p>
+<p>下面是另一个例子，修改属性描述对象的<code>enumerable</code>属性，使得该属性不可遍历。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Person</span> </span>&#123;</div><div class="line">  @nonenumerable</div><div class="line">  get kidCount() &#123; <span class="keyword">return</span> <span class="keyword">this</span>.children.length; &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">nonenumerable</span>(<span class="params">target, name, descriptor</span>) </span>&#123;</div><div class="line">  descriptor.enumerable = <span class="literal">false</span>;</div><div class="line">  <span class="keyword">return</span> descriptor;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>下面的<code>@log</code>修饰器，可以起到输出日志的作用。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Math</span> </span>&#123;</div><div class="line">  @log</div><div class="line">  add(a, b) &#123;</div><div class="line">    <span class="keyword">return</span> a + b;</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">log</span>(<span class="params">target, name, descriptor</span>) </span>&#123;</div><div class="line">  <span class="keyword">var</span> oldValue = descriptor.value;</div><div class="line"></div><div class="line">  descriptor.value = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">`Calling "<span class="subst">$&#123;name&#125;</span>" with`</span>, <span class="built_in">arguments</span>);</div><div class="line">    <span class="keyword">return</span> oldValue.apply(<span class="literal">null</span>, <span class="built_in">arguments</span>);</div><div class="line">  &#125;;</div><div class="line"></div><div class="line">  <span class="keyword">return</span> descriptor;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">const</span> math = <span class="keyword">new</span> <span class="built_in">Math</span>();</div><div class="line"></div><div class="line"><span class="comment">// passed parameters should get logged now</span></div><div class="line">math.add(<span class="number">2</span>, <span class="number">4</span>);</div></pre></td></tr></table></figure>
+<p>上面代码中，<code>@log</code>修饰器的作用就是在执行原始的操作之前，执行一次<code>console.log</code>，从而达到输出日志的目的。</p>
+<p>修饰器有注释的作用。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">@testable</div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Person</span> </span>&#123;</div><div class="line">  @readonly</div><div class="line">  @nonenumerable</div><div class="line">  name() &#123; <span class="keyword">return</span> <span class="string">`<span class="subst">$&#123;<span class="keyword">this</span>.first&#125;</span> <span class="subst">$&#123;<span class="keyword">this</span>.last&#125;</span>`</span> &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>从上面代码中，我们一眼就能看出，<code>Person</code>类是可测试的，而<code>name</code>方法是只读和不可枚举的。</p>
+<p>如果同一个方法有多个修饰器，会像剥洋葱一样，先从外到内进入，然后由内向外执行。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">dec</span>(<span class="params">id</span>)</span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">'evaluated'</span>, id);</div><div class="line">    <span class="keyword">return</span> <span class="function">(<span class="params">target, property, descriptor</span>) =&gt;</span> <span class="built_in">console</span>.log(<span class="string">'executed'</span>, id);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Example</span> </span>&#123;</div><div class="line">    @dec(<span class="number">1</span>)</div><div class="line">    @dec(<span class="number">2</span>)</div><div class="line">    method()&#123;&#125;</div><div class="line">&#125;</div><div class="line"><span class="comment">// evaluated 1</span></div><div class="line"><span class="comment">// evaluated 2</span></div><div class="line"><span class="comment">// executed 2</span></div><div class="line"><span class="comment">// executed 1</span></div></pre></td></tr></table></figure>
+<p>上面代码中，外层修饰器<code>@dec(1)</code>先进入，但是内层修饰器<code>@dec(2)</code>先执行。</p>
+<p>除了注释，修饰器还能用来类型检查。所以，对于类来说，这项功能相当有用。从长期来看，它将是JavaScript代码静态分析的重要工具。</p>
+<h2 id="为什么修饰器不能用于函数？"><a href="#为什么修饰器不能用于函数？" class="headerlink" title="为什么修饰器不能用于函数？"></a>为什么修饰器不能用于函数？</h2><p>修饰器只能用于类和类的方法，不能用于函数，因为存在函数提升。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> counter = <span class="number">0</span>;</div><div class="line"></div><div class="line"><span class="keyword">var</span> add = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">  counter++;</div><div class="line">&#125;;</div><div class="line"></div><div class="line">@add</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>) </span>&#123;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>上面的代码，意图是执行后<code>counter</code>等于1，但是实际上结果是<code>counter</code>等于0。因为函数提升，使得实际执行的代码是下面这样。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> counter;</div><div class="line"><span class="keyword">var</span> add;</div><div class="line"></div><div class="line">@add</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>) </span>&#123;</div><div class="line">&#125;</div><div class="line"></div><div class="line">counter = <span class="number">0</span>;</div><div class="line"></div><div class="line">add = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">  counter++;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<p>下面是另一个例子。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> readOnly = <span class="built_in">require</span>(<span class="string">"some-decorator"</span>);</div><div class="line"></div><div class="line">@readOnly</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>) </span>&#123;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>上面代码也有问题，因为实际执行是下面这样。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> readOnly;</div><div class="line"></div><div class="line">@readOnly</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>) </span>&#123;</div><div class="line">&#125;</div><div class="line"></div><div class="line">readOnly = <span class="built_in">require</span>(<span class="string">"some-decorator"</span>);</div></pre></td></tr></table></figure>
+<p>总之，由于存在函数提升，使得修饰器不能用于函数。类是不会提升的，所以就没有这方面的问题。</p>
+<h2 id="core-decorators-js"><a href="#core-decorators-js" class="headerlink" title="core-decorators.js"></a>core-decorators.js</h2><p><a href="https://github.com/jayphelps/core-decorators.js" target="_blank" rel="external">core-decorators.js</a>是一个第三方模块，提供了几个常见的修饰器，通过它可以更好地理解修饰器。</p>
+<p><strong>（1）@autobind</strong></p>
+<p><code>autobind</code>修饰器使得方法中的<code>this</code>对象，绑定原始对象。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> &#123; autobind &#125; <span class="keyword">from</span> <span class="string">'core-decorators'</span>;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Person</span> </span>&#123;</div><div class="line">  @autobind</div><div class="line">  getPerson() &#123;</div><div class="line">    <span class="keyword">return</span> <span class="keyword">this</span>;</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">let</span> person = <span class="keyword">new</span> Person();</div><div class="line"><span class="keyword">let</span> getPerson = person.getPerson;</div><div class="line"></div><div class="line">getPerson() === person;</div><div class="line"><span class="comment">// true</span></div></pre></td></tr></table></figure>
+<p><strong>（2）@readonly</strong></p>
+<p><code>readonly</code>修饰器使得属性或方法不可写。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> &#123; readonly &#125; <span class="keyword">from</span> <span class="string">'core-decorators'</span>;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Meal</span> </span>&#123;</div><div class="line">  @readonly</div><div class="line">  entree = <span class="string">'steak'</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">var</span> dinner = <span class="keyword">new</span> Meal();</div><div class="line">dinner.entree = <span class="string">'salmon'</span>;</div><div class="line"><span class="comment">// Cannot assign to read only property 'entree' of [object Object]</span></div></pre></td></tr></table></figure>
+<p><strong>（3）@override</strong></p>
+<p><code>override</code>修饰器检查子类的方法，是否正确覆盖了父类的同名方法，如果不正确会报错。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> &#123; override &#125; <span class="keyword">from</span> <span class="string">'core-decorators'</span>;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Parent</span> </span>&#123;</div><div class="line">  speak(first, second) &#123;&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Child</span> <span class="keyword">extends</span> <span class="title">Parent</span> </span>&#123;</div><div class="line">  @override</div><div class="line">  speak() &#123;&#125;</div><div class="line">  <span class="comment">// SyntaxError: Child#speak() does not properly override Parent#speak(first, second)</span></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// or</span></div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Child</span> <span class="keyword">extends</span> <span class="title">Parent</span> </span>&#123;</div><div class="line">  @override</div><div class="line">  speaks() &#123;&#125;</div><div class="line">  <span class="comment">// SyntaxError: No descriptor matching Child#speaks() was found on the prototype chain.</span></div><div class="line">  <span class="comment">//</span></div><div class="line">  <span class="comment">//   Did you mean "speak"?</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><strong>（4）@deprecate (别名@deprecated)</strong></p>
+<p><code>deprecate</code>或<code>deprecated</code>修饰器在控制台显示一条警告，表示该方法将废除。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> &#123; deprecate &#125; <span class="keyword">from</span> <span class="string">'core-decorators'</span>;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Person</span> </span>&#123;</div><div class="line">  @deprecate</div><div class="line">  facepalm() &#123;&#125;</div><div class="line"></div><div class="line">  @deprecate(<span class="string">'We stopped facepalming'</span>)</div><div class="line">  facepalmHard() &#123;&#125;</div><div class="line"></div><div class="line">  @deprecate(<span class="string">'We stopped facepalming'</span>, &#123; <span class="attr">url</span>: <span class="string">'http://knowyourmeme.com/memes/facepalm'</span> &#125;)</div><div class="line">  facepalmHarder() &#123;&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">let</span> person = <span class="keyword">new</span> Person();</div><div class="line"></div><div class="line">person.facepalm();</div><div class="line"><span class="comment">// DEPRECATION Person#facepalm: This function will be removed in future versions.</span></div><div class="line"></div><div class="line">person.facepalmHard();</div><div class="line"><span class="comment">// DEPRECATION Person#facepalmHard: We stopped facepalming</span></div><div class="line"></div><div class="line">person.facepalmHarder();</div><div class="line"><span class="comment">// DEPRECATION Person#facepalmHarder: We stopped facepalming</span></div><div class="line"><span class="comment">//</span></div><div class="line"><span class="comment">//     See http://knowyourmeme.com/memes/facepalm for more details.</span></div><div class="line"><span class="comment">//</span></div></pre></td></tr></table></figure>
+<p><strong>（5）@suppressWarnings</strong></p>
+<p><code>suppressWarnings</code>修饰器抑制<code>decorated</code>修饰器导致的<code>console.warn()</code>调用。但是，异步代码发出的调用除外。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> &#123; suppressWarnings &#125; <span class="keyword">from</span> <span class="string">'core-decorators'</span>;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Person</span> </span>&#123;</div><div class="line">  @deprecated</div><div class="line">  facepalm() &#123;&#125;</div><div class="line"></div><div class="line">  @suppressWarnings</div><div class="line">  facepalmWithoutWarning() &#123;</div><div class="line">    <span class="keyword">this</span>.facepalm();</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">let</span> person = <span class="keyword">new</span> Person();</div><div class="line"></div><div class="line">person.facepalmWithoutWarning();</div><div class="line"><span class="comment">// no warning is logged</span></div></pre></td></tr></table></figure>
+<h2 id="使用修饰器实现自动发布事件"><a href="#使用修饰器实现自动发布事件" class="headerlink" title="使用修饰器实现自动发布事件"></a>使用修饰器实现自动发布事件</h2><p>我们可以使用修饰器，使得对象的方法被调用时，自动发出一个事件。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> postal <span class="keyword">from</span> <span class="string">"postal/lib/postal.lodash"</span>;</div><div class="line"></div><div class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="function"><span class="keyword">function</span> <span class="title">publish</span>(<span class="params">topic, channel</span>) </span>&#123;</div><div class="line">  <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params">target, name, descriptor</span>) </span>&#123;</div><div class="line">    <span class="keyword">const</span> fn = descriptor.value;</div><div class="line"></div><div class="line">    descriptor.value = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">      <span class="keyword">let</span> value = fn.apply(<span class="keyword">this</span>, <span class="built_in">arguments</span>);</div><div class="line">      postal.channel(channel || target.channel || <span class="string">"/"</span>).publish(topic, value);</div><div class="line">    &#125;;</div><div class="line">  &#125;;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>上面代码定义了一个名为<code>publish</code>的修饰器，它通过改写<code>descriptor.value</code>，使得原方法被调用时，会自动发出一个事件。它使用的事件“发布/订阅”库是<a href="https://github.com/postaljs/postal.js" target="_blank" rel="external">Postal.js</a>。</p>
+<p>它的用法如下。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> publish <span class="keyword">from</span> <span class="string">"path/to/decorators/publish"</span>;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">FooComponent</span> </span>&#123;</div><div class="line">  @publish(<span class="string">"foo.some.message"</span>, <span class="string">"component"</span>)</div><div class="line">  someMethod() &#123;</div><div class="line">    <span class="keyword">return</span> &#123;</div><div class="line">      <span class="attr">my</span>: <span class="string">"data"</span></div><div class="line">    &#125;;</div><div class="line">  &#125;</div><div class="line">  @publish(<span class="string">"foo.some.other"</span>)</div><div class="line">  anotherMethod() &#123;</div><div class="line">    <span class="comment">// ...</span></div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>以后，只要调用<code>someMethod</code>或者<code>anotherMethod</code>，就会自动发出一个事件。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> foo = <span class="keyword">new</span> FooComponent();</div><div class="line"></div><div class="line">foo.someMethod() <span class="comment">// 在"component"频道发布"foo.some.message"事件，附带的数据是&#123; my: "data" &#125;</span></div><div class="line">foo.anotherMethod() <span class="comment">// 在"/"频道发布"foo.some.other"事件，不附带数据</span></div></pre></td></tr></table></figure>
+<h2 id="Mixin"><a href="#Mixin" class="headerlink" title="Mixin"></a>Mixin</h2><p>在修饰器的基础上，可以实现<code>Mixin</code>模式。所谓<code>Mixin</code>模式，就是对象继承的一种替代方案，中文译为“混入”（mix in），意为在一个对象之中混入另外一个对象的方法。</p>
+<p>请看下面的例子。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> Foo = &#123;</div><div class="line">  foo() &#123; <span class="built_in">console</span>.log(<span class="string">'foo'</span>) &#125;</div><div class="line">&#125;;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyClass</span> </span>&#123;&#125;</div><div class="line"></div><div class="line"><span class="built_in">Object</span>.assign(MyClass.prototype, Foo);</div><div class="line"></div><div class="line"><span class="keyword">let</span> obj = <span class="keyword">new</span> MyClass();</div><div class="line">obj.foo() <span class="comment">// 'foo'</span></div></pre></td></tr></table></figure>
+<p>上面代码之中，对象<code>Foo</code>有一个<code>foo</code>方法，通过<code>Object.assign</code>方法，可以将<code>foo</code>方法“混入”<code>MyClass</code>类，导致<code>MyClass</code>的实例<code>obj</code>对象都具有<code>foo</code>方法。这就是“混入”模式的一个简单实现。</p>
+<p>下面，我们部署一个通用脚本<code>mixins.js</code>，将mixin写成一个修饰器。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">export</span> <span class="function"><span class="keyword">function</span> <span class="title">mixins</span>(<span class="params">...list</span>) </span>&#123;</div><div class="line">  <span class="keyword">return</span> <span class="function"><span class="keyword">function</span> (<span class="params">target</span>) </span>&#123;</div><div class="line">    <span class="built_in">Object</span>.assign(target.prototype, ...list);</div><div class="line">  &#125;;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>然后，就可以使用上面这个修饰器，为类“混入”各种方法。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> &#123; mixins &#125; <span class="keyword">from</span> <span class="string">'./mixins'</span>;</div><div class="line"></div><div class="line"><span class="keyword">const</span> Foo = &#123;</div><div class="line">  foo() &#123; <span class="built_in">console</span>.log(<span class="string">'foo'</span>) &#125;</div><div class="line">&#125;;</div><div class="line"></div><div class="line">@mixins(Foo)</div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyClass</span> </span>&#123;&#125;</div><div class="line"></div><div class="line"><span class="keyword">let</span> obj = <span class="keyword">new</span> MyClass();</div><div class="line">obj.foo() <span class="comment">// "foo"</span></div></pre></td></tr></table></figure>
+<p>通过mixins这个修饰器，实现了在MyClass类上面“混入”Foo对象的<code>foo</code>方法。</p>
+<p>不过，上面的方法会改写<code>MyClass</code>类的<code>prototype</code>对象，如果不喜欢这一点，也可以通过类的继承实现mixin。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyClass</span> <span class="keyword">extends</span> <span class="title">MyBaseClass</span> </span>&#123;</div><div class="line">  <span class="comment">/* ... */</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>上面代码中，<code>MyClass</code>继承了<code>MyBaseClass</code>。如果我们想在<code>MyClass</code>里面“混入”一个<code>foo</code>方法，一个办法是在<code>MyClass</code>和<code>MyBaseClass</code>之间插入一个混入类，这个类具有<code>foo</code>方法，并且继承了<code>MyBaseClass</code>的所有方法，然后<code>MyClass</code>再继承这个类。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> MyMixin = <span class="function">(<span class="params">superclass</span>) =&gt;</span> <span class="class"><span class="keyword">class</span> <span class="keyword">extends</span> <span class="title">superclass</span> </span>&#123;</div><div class="line">  foo() &#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">'foo from MyMixin'</span>);</div><div class="line">  &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<p>上面代码中，<code>MyMixin</code>是一个混入类生成器，接受<code>superclass</code>作为参数，然后返回一个继承<code>superclass</code>的子类，该子类包含一个<code>foo</code>方法。</p>
+<p>接着，目标类再去继承这个混入类，就达到了“混入”<code>foo</code>方法的目的。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyClass</span> <span class="keyword">extends</span> <span class="title">MyMixin</span>(<span class="title">MyBaseClass</span>) </span>&#123;</div><div class="line">  <span class="comment">/* ... */</span></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">let</span> c = <span class="keyword">new</span> MyClass();</div><div class="line">c.foo(); <span class="comment">// "foo from MyMixin"</span></div></pre></td></tr></table></figure>
+<p>如果需要“混入”多个方法，就生成多个混入类。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyClass</span> <span class="keyword">extends</span> <span class="title">Mixin1</span>(<span class="title">Mixin2</span>(<span class="title">MyBaseClass</span>)) </span>&#123;</div><div class="line">  <span class="comment">/* ... */</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>这种写法的一个好处，是可以调用<code>super</code>，因此可以避免在“混入”过程中覆盖父类的同名方法。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> Mixin1 = <span class="function">(<span class="params">superclass</span>) =&gt;</span> <span class="class"><span class="keyword">class</span> <span class="keyword">extends</span> <span class="title">superclass</span> </span>&#123;</div><div class="line">  foo() &#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">'foo from Mixin1'</span>);</div><div class="line">    <span class="keyword">if</span> (<span class="keyword">super</span>.foo) <span class="keyword">super</span>.foo();</div><div class="line">  &#125;</div><div class="line">&#125;;</div><div class="line"></div><div class="line"><span class="keyword">let</span> Mixin2 = <span class="function">(<span class="params">superclass</span>) =&gt;</span> <span class="class"><span class="keyword">class</span> <span class="keyword">extends</span> <span class="title">superclass</span> </span>&#123;</div><div class="line">  foo() &#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">'foo from Mixin2'</span>);</div><div class="line">    <span class="keyword">if</span> (<span class="keyword">super</span>.foo) <span class="keyword">super</span>.foo();</div><div class="line">  &#125;</div><div class="line">&#125;;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">S</span> </span>&#123;</div><div class="line">  foo() &#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">'foo from S'</span>);</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">C</span> <span class="keyword">extends</span> <span class="title">Mixin1</span>(<span class="title">Mixin2</span>(<span class="title">S</span>)) </span>&#123;</div><div class="line">  foo() &#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">'foo from C'</span>);</div><div class="line">    <span class="keyword">super</span>.foo();</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>上面代码中，每一次<code>混入</code>发生时，都调用了父类的<code>super.foo</code>方法，导致父类的同名方法没有被覆盖，行为被保留了下来。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">new</span> C().foo()</div><div class="line"><span class="comment">// foo from C</span></div><div class="line"><span class="comment">// foo from Mixin1</span></div><div class="line"><span class="comment">// foo from Mixin2</span></div><div class="line"><span class="comment">// foo from S</span></div></pre></td></tr></table></figure>
+<h2 id="Trait"><a href="#Trait" class="headerlink" title="Trait"></a>Trait</h2><p>Trait也是一种修饰器，效果与Mixin类似，但是提供更多功能，比如防止同名方法的冲突、排除混入某些方法、为混入的方法起别名等等。</p>
+<p>下面采用<a href="https://github.com/CocktailJS/traits-decorator" target="_blank" rel="external">traits-decorator</a>这个第三方模块作为例子。这个模块提供的traits修饰器，不仅可以接受对象，还可以接受ES6类作为参数。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> &#123; traits &#125; <span class="keyword">from</span> <span class="string">'traits-decorator'</span>;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">TFoo</span> </span>&#123;</div><div class="line">  foo() &#123; <span class="built_in">console</span>.log(<span class="string">'foo'</span>) &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">const</span> TBar = &#123;</div><div class="line">  bar() &#123; <span class="built_in">console</span>.log(<span class="string">'bar'</span>) &#125;</div><div class="line">&#125;;</div><div class="line"></div><div class="line">@traits(TFoo, TBar)</div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyClass</span> </span>&#123; &#125;</div><div class="line"></div><div class="line"><span class="keyword">let</span> obj = <span class="keyword">new</span> MyClass();</div><div class="line">obj.foo() <span class="comment">// foo</span></div><div class="line">obj.bar() <span class="comment">// bar</span></div></pre></td></tr></table></figure>
+<p>上面代码中，通过traits修饰器，在<code>MyClass</code>类上面“混入”了<code>TFoo</code>类的<code>foo</code>方法和<code>TBar</code>对象的<code>bar</code>方法。</p>
+<p>Trait不允许“混入”同名方法。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> &#123; traits &#125; <span class="keyword">from</span> <span class="string">'traits-decorator'</span>;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">TFoo</span> </span>&#123;</div><div class="line">  foo() &#123; <span class="built_in">console</span>.log(<span class="string">'foo'</span>) &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">const</span> TBar = &#123;</div><div class="line">  bar() &#123; <span class="built_in">console</span>.log(<span class="string">'bar'</span>) &#125;,</div><div class="line">  foo() &#123; <span class="built_in">console</span>.log(<span class="string">'foo'</span>) &#125;</div><div class="line">&#125;;</div><div class="line"></div><div class="line">@traits(TFoo, TBar)</div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyClass</span> </span>&#123; &#125;</div><div class="line"><span class="comment">// 报错</span></div><div class="line"><span class="comment">// throw new Error('Method named: ' + methodName + ' is defined twice.');</span></div><div class="line"><span class="comment">//        ^</span></div><div class="line"><span class="comment">// Error: Method named: foo is defined twice.</span></div></pre></td></tr></table></figure>
+<p>上面代码中，TFoo和TBar都有foo方法，结果traits修饰器报错。</p>
+<p>一种解决方法是排除TBar的foo方法。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> &#123; traits, excludes &#125; <span class="keyword">from</span> <span class="string">'traits-decorator'</span>;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">TFoo</span> </span>&#123;</div><div class="line">  foo() &#123; <span class="built_in">console</span>.log(<span class="string">'foo'</span>) &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">const</span> TBar = &#123;</div><div class="line">  bar() &#123; <span class="built_in">console</span>.log(<span class="string">'bar'</span>) &#125;,</div><div class="line">  foo() &#123; <span class="built_in">console</span>.log(<span class="string">'foo'</span>) &#125;</div><div class="line">&#125;;</div><div class="line"></div><div class="line">@traits(TFoo, <span class="attr">TBar</span>::excludes(<span class="string">'foo'</span>))</div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyClass</span> </span>&#123; &#125;</div><div class="line"></div><div class="line"><span class="keyword">let</span> obj = <span class="keyword">new</span> MyClass();</div><div class="line">obj.foo() <span class="comment">// foo</span></div><div class="line">obj.bar() <span class="comment">// bar</span></div></pre></td></tr></table></figure>
+<p>上面代码使用绑定运算符（::）在TBar上排除foo方法，混入时就不会报错了。</p>
+<p>另一种方法是为TBar的foo方法起一个别名。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> &#123; traits, alias &#125; <span class="keyword">from</span> <span class="string">'traits-decorator'</span>;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">TFoo</span> </span>&#123;</div><div class="line">  foo() &#123; <span class="built_in">console</span>.log(<span class="string">'foo'</span>) &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">const</span> TBar = &#123;</div><div class="line">  bar() &#123; <span class="built_in">console</span>.log(<span class="string">'bar'</span>) &#125;,</div><div class="line">  foo() &#123; <span class="built_in">console</span>.log(<span class="string">'foo'</span>) &#125;</div><div class="line">&#125;;</div><div class="line"></div><div class="line">@traits(TFoo, <span class="attr">TBar</span>::alias(&#123;<span class="attr">foo</span>: <span class="string">'aliasFoo'</span>&#125;))</div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyClass</span> </span>&#123; &#125;</div><div class="line"></div><div class="line"><span class="keyword">let</span> obj = <span class="keyword">new</span> MyClass();</div><div class="line">obj.foo() <span class="comment">// foo</span></div><div class="line">obj.aliasFoo() <span class="comment">// foo</span></div><div class="line">obj.bar() <span class="comment">// bar</span></div></pre></td></tr></table></figure>
+<p>上面代码为TBar的foo方法起了别名aliasFoo，于是MyClass也可以混入TBar的foo方法了。</p>
+<p>alias和excludes方法，可以结合起来使用。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">@traits(TExample::excludes(<span class="string">'foo'</span>,<span class="string">'bar'</span>)::alias(&#123;<span class="attr">baz</span>:<span class="string">'exampleBaz'</span>&#125;))</div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyClass</span> </span>&#123;&#125;</div></pre></td></tr></table></figure>
+<p>上面代码排除了TExample的foo方法和bar方法，为baz方法起了别名exampleBaz。</p>
+<p>as方法则为上面的代码提供了另一种写法。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">@traits(TExample::<span class="keyword">as</span>(&#123;<span class="attr">excludes</span>:[<span class="string">'foo'</span>, <span class="string">'bar'</span>], <span class="attr">alias</span>: &#123;<span class="attr">baz</span>: <span class="string">'exampleBaz'</span>&#125;&#125;))</div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyClass</span> </span>&#123;&#125;</div></pre></td></tr></table></figure>
+<h2 id="Babel转码器的支持"><a href="#Babel转码器的支持" class="headerlink" title="Babel转码器的支持"></a>Babel转码器的支持</h2><p>目前，Babel转码器已经支持Decorator。</p>
+<p>首先，安装<code>babel-core</code>和<code>babel-plugin-transform-decorators</code>。由于后者包括在<code>babel-preset-stage-0</code>之中，所以改为安装<code>babel-preset-stage-0</code>亦可。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ npm install babel-core babel-plugin-transform-decorators</div></pre></td></tr></table></figure>
+<p>然后，设置配置文件<code>.babelrc</code>。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">  <span class="string">"plugins"</span>: [<span class="string">"transform-decorators"</span>]</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>这时，Babel就可以对Decorator转码了。</p>
+<p>脚本中打开的命令如下。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">babel.transform(<span class="string">"code"</span>, &#123;<span class="attr">plugins</span>: [<span class="string">"transform-decorators"</span>]&#125;)</div></pre></td></tr></table></figure>
+<p>Babel的官方网站提供一个<a href="https://babeljs.io/repl/" target="_blank" rel="external">在线转码器</a>，只要勾选Experimental，就能支持Decorator的在线转码。</p>
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      <a href="/2016/10/25/修饰器/" class="archive-article-date">
+  	<time datetime="2016-10-25T01:36:37.000Z" itemprop="datePublished"><i class="icon-clock"></i>2016-10-25</time>
+</a>
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags"></i>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ECMAScript-6/">ECMAScript 6</a></li></ul>
+	</div>
+
+      
+
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+  
+<nav id="article-nav">
+  
+    <a href="/2016/10/25/Module/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          Module
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016/10/25/Class/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Class</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+
+
+
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="修饰器" data-title="修饰器" data-url="https://ailley.github.io/2016/10/25/修饰器/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"true"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
+
+
+      </div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2016 Ailley
+    	</div>
+      	<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div>
+    </div>
+  </div>
+</footer>
+    </div>
+    <script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: true,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false,
+		root: "/"
+	}
+</script>
+
+<script src="/./main.js"></script>
+
+
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+    
+<div class="tools-col">
+  <ul class="btn-wrap">
+    
+      <li class="chose" data-hook="tools-section-all"><span class="text">全部</span><i class="icon-book"></i></li>
+    
+    
+      <li data-hook="tools-section-tag"><span class="text">标签</span><i class="icon-price-tags"></i></li>
+    
+    
+      <li data-hook="tools-section-friends"><span class="text">友链</span><i class="icon-link"></i></li>
+    
+    
+      <li data-hook="tools-section-me"><span class="text">我</span><i class="icon-smile"></i></li>
+    
+  </ul>
+  <div class="tools-wrap">
+    
+    	<section class="tools-section tools-section-all chose">
+    	</section>
+    
+
+    
+    	<section class="tools-section tools-section-tag">
+    			<div class="widget tagcloud" id="js-tagcloud">
+    				<a href="/tags/ECMAScript-6/" style="font-size: 10px;">ECMAScript 6</a>
+    			</div>
+    	</section>
+    
+
+    
+    	<section class="tools-section tools-section-friends">
+  		
+  			<div class="friends-wrap" id="js-friends">
+  			
+  	          <a target="_blank" class="main-nav-link switch-friends-link" href="http://w3cmart.com">w3cmart博客站</a>
+  	        
+  	          <a target="_blank" class="main-nav-link switch-friends-link" href="https://github.com/ailley">ailley的github</a>
+  	        
+  	        </div>
+  		
+    	</section>
+    
+
+    
+    	<section class="tools-section tools-section-me">
+  	  	
+  	  		<div class="aboutme-wrap" id="js-aboutme">while(true)&lt;br&gt;{ &lt;br&gt;eat(); &lt;br&gt;code(); &lt;br&gt;sleep();&lt;br&gt; }</div>
+  	  	
+    	</section>
+    
+  </div>
+  
+</div>
+    <!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+  </div>
+</body>
+</html>

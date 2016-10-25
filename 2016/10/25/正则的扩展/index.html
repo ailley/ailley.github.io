@@ -253,14 +253,14 @@
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">/\d+(?=%)/.exec(<span class="string">'100% of US presidents have been male'</span>)  <span class="comment">// ["100"]</span></div><div class="line">/\d+(?!%)/.exec(<span class="string">'that’s all 44 of them'</span>)                 <span class="comment">// ["44"]</span></div></pre></td></tr></table></figure>
 <p>上面两个字符串，如果互换正则表达式，就会匹配失败。另外，还可以看到，”先行断言“括号之中的部分（<code>(?=%)</code>），是不计入返回结果的。</p>
 <p>“后行断言”正好与”先行断言”相反，<code>x</code>只有在<code>y</code>后面才匹配，必须写成<code>/(?&lt;=y)x/</code>。比如，只匹配美元符号之后的数字，要写成<code>/(?&lt;=\$)\d+/</code>。”后行否定断言“则与”先行否定断言“相反，<code>x</code>只有不在<code>y</code>后面才匹配，必须写成<code>/(?&lt;!y)x/</code>。比如，只匹配不在美元符号后面的数字，要写成<code>/(?&lt;!\$)\d+/</code>。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">/(?&lt;=\$)\d+/.exec('Benjamin Franklin is on the $100 bill')  // ["100"]</div><div class="line">/(?&lt;!\$)\d+/.exec('it’s is worth about €90')                // ["90"]</div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">/(?<span class="xml"><span class="tag">&lt;<span class="name">=\$)\d+</span>/<span class="attr">.exec</span>('<span class="attr">Benjamin</span> <span class="attr">Franklin</span> <span class="attr">is</span> <span class="attr">on</span> <span class="attr">the</span> $<span class="attr">100</span> <span class="attr">bill</span>')  // ["<span class="attr">100</span>"]</span></span></div><div class="line">/(?&lt;!\$)\<span class="attr">d</span>+/<span class="attr">.exec</span>('<span class="attr">it</span>’<span class="attr">s</span> <span class="attr">is</span> <span class="attr">worth</span> <span class="attr">about</span> €<span class="attr">90</span>')                // ["<span class="attr">90</span>"]</div></pre></td></tr></table></figure>
 <p>上面的例子中，”后行断言”的括号之中的部分（<code>(?&lt;=\$)</code>），也是不计入返回结果。</p>
 <p>“后行断言”的实现，需要先匹配<code>/(?&lt;=y)x/</code>的<code>x</code>，然后再回到左边，匹配<code>y</code>的部分。这种”先右后左”的执行顺序，与所有其他正则操作相反，导致了一些不符合预期的行为。</p>
 <p>首先，”后行断言“的组匹配，与正常情况下结果是不一样的。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">/(?&lt;=(\d+)(\d+))$/.exec('1053') // ["", "1", "053"]</div><div class="line">/^(\d+)(\d+)$/.exec('1053') // ["1053", "105", "3"]</div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">/(?<span class="xml"><span class="tag">&lt;<span class="name">=(\d+)(\d+))$</span>/<span class="attr">.exec</span>('<span class="attr">1053</span>') // ["", "<span class="attr">1</span>", "<span class="attr">053</span>"]</span></span></div><div class="line">/^(\<span class="attr">d</span>+)(\<span class="attr">d</span>+)$/<span class="attr">.exec</span>('<span class="attr">1053</span>') // ["<span class="attr">1053</span>", "<span class="attr">105</span>", "<span class="attr">3</span>"]</div></pre></td></tr></table></figure>
 <p>上面代码中，需要捕捉两个组匹配。没有”后行断言”时，第一个括号是贪婪模式，第二个括号只能捕获一个字符，所以结果是<code>105</code>和<code>3</code>。而”后行断言”时，由于执行顺序是从右到左，第二个括号是贪婪模式，第一个括号只能捕获一个字符，所以结果是<code>1</code>和<code>053</code>。</p>
 <p>其次，”后行断言”的反斜杠引用，也与通常的顺序相反，必须放在对应的那个括号之前。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">/(?&lt;=(o)d\1)r/.exec('hodor')  // null</div><div class="line">/(?&lt;=\1d(o))r/.exec('hodor')  // ["r", "o"]</div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">/(?<span class="xml"><span class="tag">&lt;<span class="name">=(o)d\1)r</span>/<span class="attr">.exec</span>('<span class="attr">hodor</span>')  // <span class="attr">null</span></span></span></div><div class="line">/(?&lt;=<span class="string">\1d(o))r/.exec(</span>'<span class="attr">hodor</span>')  // ["<span class="attr">r</span>", "<span class="attr">o</span>"]</div></pre></td></tr></table></figure>
 <p>上面代码中，如果后行断言的反斜杠引用（<code>\1</code>）放在括号的后面，就不会得到匹配结果，必须放在前面才可以。</p>
 <h2 id="Unicode属性类"><a href="#Unicode属性类" class="headerlink" title="Unicode属性类"></a>Unicode属性类</h2><p>目前，有一个<a href="https://github.com/mathiasbynens/es-regexp-unicode-property-escapes" target="_blank" rel="external">提案</a>，引入了一种新的类的写法<code>\p{...}</code>和<code>\P{...}</code>，允许正则表达式匹配符合Unicode某种属性的所有字符。</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> regexGreekSymbol = <span class="regexp">/\p&#123;Script=Greek&#125;/u</span>;</div><div class="line">regexGreekSymbol.test(<span class="string">'π'</span>) <span class="comment">// u</span></div></pre></td></tr></table></figure>
@@ -301,6 +301,15 @@
 
   
 <nav id="article-nav">
+  
+    <a href="/2016/10/25/数值的扩展/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          数值的扩展
+        
+      </div>
+    </a>
   
   
     <a href="/2016/10/25/字符串的扩展/" id="article-nav-older" class="article-nav-link-wrap">
