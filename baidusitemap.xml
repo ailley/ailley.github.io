@@ -4,14 +4,14 @@
 
     
   <url>
-    <loc>https://ailley.github.io/2016/09/24/Markdown%E8%AF%AD%E6%B3%95/</loc>
-    <lastmod>2016-09-24T04:49:51.963Z</lastmod>
+    <loc>https://ailley.github.io/2016/10/25/%E6%AD%A3%E5%88%99%E7%9A%84%E6%89%A9%E5%B1%95/</loc>
+    <lastmod>2016-10-25T01:08:04.079Z</lastmod>
     <data>
         <display>
-        <title>Markdown语法</title>
-        <pubTime>2016-09-24T03:00:37.000Z</pubTime>
+        <title>正则的扩展</title>
+        <pubTime>2016-10-25T01:05:01.000Z</pubTime>
         
-        <tag>markdown</tag>
+        <tag>ECMAScript 6</tag>
          
          
            
@@ -21,13 +21,66 @@
 
     
   <url>
-    <loc>https://ailley.github.io/2016/09/22/hello-world/</loc>
-    <lastmod>2016-09-22T14:14:10.231Z</lastmod>
+    <loc>https://ailley.github.io/2016/10/25/%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9A%84%E6%89%A9%E5%B1%95/</loc>
+    <lastmod>2016-10-25T01:03:21.886Z</lastmod>
     <data>
         <display>
-        <title>Hello World</title>
-        <pubTime>2016-09-22T14:14:10.228Z</pubTime>
+        <title>字符串的扩展</title>
+        <pubTime>2016-10-25T01:02:27.000Z</pubTime>
         
+        <tag>ECMAScript 6</tag>
+         
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://ailley.github.io/2016/10/25/%E5%8F%98%E9%87%8F%E7%9A%84%E8%A7%A3%E6%9E%84%E8%B5%8B%E5%80%BC/</loc>
+    <lastmod>2016-10-25T00:59:51.369Z</lastmod>
+    <data>
+        <display>
+        <title>变量的解构赋值</title>
+        <pubTime>2016-10-25T00:58:35.000Z</pubTime>
+        
+        <tag>ECMAScript 6</tag>
+         
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://ailley.github.io/2016/10/25/let%E5%92%8Cconst%E5%91%BD%E4%BB%A4/</loc>
+    <lastmod>2016-10-25T00:56:36.972Z</lastmod>
+    <data>
+        <display>
+        <title>let和const命令</title>
+        <pubTime>2016-10-25T00:54:36.000Z</pubTime>
+        
+        <tag>ECMAScript 6</tag>
+         
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://ailley.github.io/2016/10/25/ECMAScript%206%E7%AE%80%E4%BB%8B/</loc>
+    <lastmod>2016-10-25T00:52:39.298Z</lastmod>
+    <data>
+        <display>
+        <title>ECMAScript 6简介</title>
+        <pubTime>2016-10-25T00:45:29.000Z</pubTime>
+        
+        <tag>ECMAScript 6</tag>
+         
          
            
         </display>

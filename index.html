@@ -130,7 +130,7 @@
       <div class="body-wrap">
         
   
-    <article id="post-Markdown语法" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-正则的扩展" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <input type="hidden" class="isFancy" />
@@ -140,7 +140,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2016/09/24/Markdown语法/">Markdown语法</a>
+      <a class="article-title" href="/2016/10/25/正则的扩展/">正则的扩展</a>
     </h1>
   
 
@@ -148,24 +148,30 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="Settings"><a href="#Settings" class="headerlink" title="Settings"></a>Settings</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> testEditor = editormd(<span class="string">"test-editormd"</span>, &#123;</div><div class="line">    <span class="attr">autoHeight</span> : <span class="literal">true</span></div><div class="line">&#125;);</div></pre></td></tr></table></figure>
-<h1 id="Editor-md"><a href="#Editor-md" class="headerlink" title="Editor.md"></a>Editor.md</h1><p><img src="https://pandao.github.io/editor.md/images/logos/editormd-logo-180x180.png" alt=""></p>
-<p><img src="https://img.shields.io/github/stars/pandao/editor.md.svg" alt=""> <img src="https://img.shields.io/github/forks/pandao/editor.md.svg" alt=""> <img src="https://img.shields.io/github/tag/pandao/editor.md.svg" alt=""> <img src="https://img.shields.io/github/release/pandao/editor.md.svg" alt=""> <img src="https://img.shields.io/github/issues/pandao/editor.md.svg" alt=""> <img src="https://img.shields.io/bower/v/editor.md.svg" alt=""></p>
-<p><strong>目录 (Table of Contents)</strong></p>
+        <h2 id="RegExp构造函数"><a href="#RegExp构造函数" class="headerlink" title="RegExp构造函数"></a>RegExp构造函数</h2><p>在ES5中，RegExp构造函数的参数有两种情况。</p>
+<p>第一种情况是，参数是字符串，这时第二个参数表示正则表达式的修饰符（flag）。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> regex = <span class="keyword">new</span> <span class="built_in">RegExp</span>(<span class="string">'xyz'</span>, <span class="string">'i'</span>);</div><div class="line"><span class="comment">// 等价于</span></div><div class="line"><span class="keyword">var</span> regex = <span class="regexp">/xyz/i</span>;</div></pre></td></tr></table></figure>
+<p>第二种情况是，参数是一个正则表示式，这时会返回一个原有正则表达式的拷贝。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> regex = <span class="keyword">new</span> <span class="built_in">RegExp</span>(<span class="regexp">/xyz/i</span>);</div><div class="line"><span class="comment">// 等价于</span></div><div class="line"><span class="keyword">var</span> regex = <span class="regexp">/xyz/i</span>;</div></pre></td></tr></table></figure>
+<p>但是，ES5不允许此时使用第二个参数，添加修饰符，否则会报错。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> regex = <span class="keyword">new</span> <span class="built_in">RegExp</span>(<span class="regexp">/xyz/</span>, <span class="string">'i'</span>);</div><div class="line"><span class="comment">// Uncaught TypeError: Cannot supply flags when constructing one RegExp from another</span></div></pre></td></tr></table></figure>
+<p>ES6改变了这种行为。如果RegExp构造函数第一个参数是一个正则对象，那么可以使用第二个参数指定修饰符。而且，返回的正则表达式会忽略原有的正则表达式的修饰符，只使用新指定的修饰符。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">new</span> <span class="built_in">RegExp</span>(<span class="regexp">/abc/ig</span>, <span class="string">'i'</span>).flags</div><div class="line"><span class="comment">// "i"</span></div></pre></td></tr></table></figure>
+<p>上面代码中，原有正则对象的修饰符是<code>ig</code>，它会被第二个参数<code>i</code>覆盖。<br>
         <p class="article-more-link">
-          <a  href="/2016/09/24/Markdown语法/#more">more >></a>
+          <a  href="/2016/10/25/正则的扩展/#more">more >></a>
         </p>
       
     </div>
     <div class="article-info article-info-index">
       
-      <a href="/2016/09/24/Markdown语法/" class="archive-article-date">
-  	<time datetime="2016-09-24T03:00:37.000Z" itemprop="datePublished"><i class="icon-clock"></i>2016-09-24</time>
+      <a href="/2016/10/25/正则的扩展/" class="archive-article-date">
+  	<time datetime="2016-10-25T01:05:01.000Z" itemprop="datePublished"><i class="icon-clock"></i>2016-10-25</time>
 </a>
       
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags"></i>
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/markdown/">markdown</a></li></ul>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ECMAScript-6/">ECMAScript 6</a></li></ul>
 	</div>
 
       
@@ -185,7 +191,7 @@
 
 
   
-    <article id="post-hello-world" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-字符串的扩展" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <input type="hidden" class="isFancy" />
@@ -195,7 +201,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2016/09/22/hello-world/">Hello World</a>
+      <a class="article-title" href="/2016/10/25/字符串的扩展/">字符串的扩展</a>
     </h1>
   
 
@@ -203,24 +209,211 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
-
+        <p>ES6加强了对Unicode的支持，并且扩展了字符串对象。</p>
+<h2 id="字符的Unicode表示法"><a href="#字符的Unicode表示法" class="headerlink" title="字符的Unicode表示法"></a>字符的Unicode表示法</h2><p>JavaScript允许采用<code>\uxxxx</code>形式表示一个字符，其中“xxxx”表示字符的码点。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="string">"\u0061"</span></div><div class="line"><span class="comment">// "a"</span></div></pre></td></tr></table></figure>
+<p>但是，这种表示法只限于<code>\u0000</code>——<code>\uFFFF</code>之间的字符。超出这个范围的字符，必须用两个双字节的形式表达。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="string">"\uD842\uDFB7"</span></div><div class="line"><span class="comment">// "𠮷"</span></div><div class="line"></div><div class="line"><span class="string">"\u20BB7"</span></div><div class="line"><span class="comment">// " 7"</span></div></pre></td></tr></table></figure>
+<p>上面代码表示，如果直接在“\u”后面跟上超过<code>0xFFFF</code>的数值（比如<code>\u20BB7</code>），JavaScript会理解成“\u20BB+7”。由于<code>\u20BB</code>是一个不可打印字符，所以只会显示一个空格，后面跟着一个7。</p>
+<p>ES6对这一点做出了改进，只要将码点放入大括号，就能正确解读该字符。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="string">"\u&#123;20BB7&#125;"</span></div><div class="line"><span class="comment">// "𠮷"</span></div><div class="line"></div><div class="line"><span class="string">"\u&#123;41&#125;\u&#123;42&#125;\u&#123;43&#125;"</span></div><div class="line"><span class="comment">// "ABC"</span></div><div class="line"></div><div class="line"><span class="keyword">let</span> hello = <span class="number">123</span>;</div><div class="line">hell\u&#123;<span class="number">6</span>F&#125; <span class="comment">// 123</span></div><div class="line"></div><div class="line"><span class="string">'\u&#123;1F680&#125;'</span> === <span class="string">'\uD83D\uDE80'</span></div><div class="line"><span class="comment">// true</span></div></pre></td></tr></table></figure>
+<p>上面代码中，最后一个例子表明，大括号表示法与四字节的UTF-16编码是等价的。<br>
+        <p class="article-more-link">
+          <a  href="/2016/10/25/字符串的扩展/#more">more >></a>
+        </p>
       
     </div>
     <div class="article-info article-info-index">
       
-      <a href="/2016/09/22/hello-world/" class="archive-article-date">
-  	<time datetime="2016-09-22T14:14:10.228Z" itemprop="datePublished"><i class="icon-clock"></i>2016-09-22</time>
+      <a href="/2016/10/25/字符串的扩展/" class="archive-article-date">
+  	<time datetime="2016-10-25T01:02:27.000Z" itemprop="datePublished"><i class="icon-clock"></i>2016-10-25</time>
 </a>
       
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags"></i>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ECMAScript-6/">ECMAScript 6</a></li></ul>
+	</div>
+
+      
+
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-变量的解构赋值" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/10/25/变量的解构赋值/">变量的解构赋值</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="数组的解构赋值"><a href="#数组的解构赋值" class="headerlink" title="数组的解构赋值"></a>数组的解构赋值</h2><h3 id="基本用法"><a href="#基本用法" class="headerlink" title="基本用法"></a>基本用法</h3><p>ES6允许按照一定模式，从数组和对象中提取值，对变量进行赋值，这被称为解构（Destructuring）。</p>
+<p>以前，为变量赋值，只能直接指定值。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> a = <span class="number">1</span>;</div><div class="line"><span class="keyword">var</span> b = <span class="number">2</span>;</div><div class="line"><span class="keyword">var</span> c = <span class="number">3</span>;</div></pre></td></tr></table></figure>
+<p>ES6允许写成下面这样。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> [a, b, c] = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>];</div></pre></td></tr></table></figure>
+<p>上面代码表示，可以从数组中提取值，按照对应位置，对变量赋值。</p>
+<p>本质上，这种写法属于“模式匹配”，只要等号两边的模式相同，左边的变量就会被赋予对应的值。下面是一些使用嵌套数组进行解构的例子。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> [foo, [[bar], baz]] = [<span class="number">1</span>, [[<span class="number">2</span>], <span class="number">3</span>]];</div><div class="line">foo <span class="comment">// 1</span></div><div class="line">bar <span class="comment">// 2</span></div><div class="line">baz <span class="comment">// 3</span></div><div class="line"></div><div class="line"><span class="keyword">let</span> [ , , third] = [<span class="string">"foo"</span>, <span class="string">"bar"</span>, <span class="string">"baz"</span>];</div><div class="line">third <span class="comment">// "baz"</span></div><div class="line"></div><div class="line"><span class="keyword">let</span> [x, , y] = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>];</div><div class="line">x <span class="comment">// 1</span></div><div class="line">y <span class="comment">// 3</span></div><div class="line"></div><div class="line"><span class="keyword">let</span> [head, ...tail] = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>];</div><div class="line">head <span class="comment">// 1</span></div><div class="line">tail <span class="comment">// [2, 3, 4]</span></div><div class="line"></div><div class="line"><span class="keyword">let</span> [x, y, ...z] = [<span class="string">'a'</span>];</div><div class="line">x <span class="comment">// "a"</span></div><div class="line">y <span class="comment">// undefined</span></div><div class="line">z <span class="comment">// []</span></div></pre></td></tr></table></figure>
+<p>如果解构不成功，变量的值就等于<code>undefined</code>。<br>
+        <p class="article-more-link">
+          <a  href="/2016/10/25/变量的解构赋值/#more">more >></a>
+        </p>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      <a href="/2016/10/25/变量的解构赋值/" class="archive-article-date">
+  	<time datetime="2016-10-25T00:58:35.000Z" itemprop="datePublished"><i class="icon-clock"></i>2016-10-25</time>
+</a>
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags"></i>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ECMAScript-6/">ECMAScript 6</a></li></ul>
+	</div>
+
+      
+
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-let和const命令" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/10/25/let和const命令/">let和const命令</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="let命令"><a href="#let命令" class="headerlink" title="let命令"></a>let命令</h2><h3 id="基本用法"><a href="#基本用法" class="headerlink" title="基本用法"></a>基本用法</h3><p>ES6新增了<code>let</code>命令，用来声明变量。它的用法类似于<code>var</code>，但是所声明的变量，只在<code>let</code>命令所在的代码块内有效。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">  <span class="keyword">let</span> a = <span class="number">10</span>;</div><div class="line">  <span class="keyword">var</span> b = <span class="number">1</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line">a <span class="comment">// ReferenceError: a is not defined.</span></div><div class="line">b <span class="comment">// 1</span></div></pre></td></tr></table></figure>
+<p>上面代码在代码块之中，分别用<code>let</code>和<code>var</code>声明了两个变量。然后在代码块之外调用这两个变量，结果<code>let</code>声明的变量报错，<code>var</code>声明的变量返回了正确的值。这表明，<code>let</code>声明的变量只在它所在的代码块有效。</p>
+<p><code>for</code>循环的计数器，就很合适使用<code>let</code>命令。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i++) &#123;&#125;</div><div class="line"></div><div class="line"><span class="built_in">console</span>.log(i);</div><div class="line"><span class="comment">//ReferenceError: i is not defined</span></div></pre></td></tr></table></figure>
+<p>上面代码中，计数器<code>i</code>只在<code>for</code>循环体内有效，在循环体外引用就会报错。</p>
+<p>下面的代码如果使用<code>var</code>，最后输出的是10。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> a = [];</div><div class="line"><span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i++) &#123;</div><div class="line">  a[i] = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(i);</div><div class="line">  &#125;;</div><div class="line">&#125;</div><div class="line">a[<span class="number">6</span>](); <span class="comment">// 10</span></div></pre></td></tr></table></figure>
+<p>上面代码中，变量<code>i</code>是<code>var</code>声明的，在全局范围内都有效。所以每一次循环，新的<code>i</code>值都会覆盖旧值，导致最后输出的是最后一轮的<code>i</code>的值。</p>
+<p>如果使用<code>let</code>，声明的变量仅在块级作用域内有效，最后输出的是6。<br>
+        <p class="article-more-link">
+          <a  href="/2016/10/25/let和const命令/#more">more >></a>
+        </p>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      <a href="/2016/10/25/let和const命令/" class="archive-article-date">
+  	<time datetime="2016-10-25T00:54:36.000Z" itemprop="datePublished"><i class="icon-clock"></i>2016-10-25</time>
+</a>
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags"></i>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ECMAScript-6/">ECMAScript 6</a></li></ul>
+	</div>
+
+      
+
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-ECMAScript 6简介" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/10/25/ECMAScript 6简介/">ECMAScript 6简介</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>ECMAScript 6.0（以下简称ES6）是JavaScript语言的下一代标准，已经在2015年6月正式发布了。它的目标，是使得JavaScript语言可以用来编写复杂的大型应用程序，成为企业级开发语言。</p>
+<h2 id="ECMAScript和JavaScript的关系"><a href="#ECMAScript和JavaScript的关系" class="headerlink" title="ECMAScript和JavaScript的关系"></a>ECMAScript和JavaScript的关系</h2><p>一个常见的问题是，ECMAScript和JavaScript到底是什么关系？</p>
+<p>要讲清楚这个问题，需要回顾历史。1996年11月，JavaScript的创造者Netscape公司，决定将JavaScript提交给国际标准化组织ECMA，希望这种语言能够成为国际标准。次年，ECMA发布262号标准文件（ECMA-262）的第一版，规定了浏览器脚本语言的标准，并将这种语言称为ECMAScript，这个版本就是1.0版。</p>
+<p>该标准从一开始就是针对JavaScript语言制定的，但是之所以不叫JavaScript，有两个原因。一是商标，Java是Sun公司的商标，根据授权协议，只有Netscape公司可以合法地使用JavaScript这个名字，且JavaScript本身也已经被Netscape公司注册为商标。二是想体现这门语言的制定者是ECMA，不是Netscape，这样有利于保证这门语言的开放性和中立性。</p>
+<p>因此，ECMAScript和JavaScript的关系是，前者是后者的规格，后者是前者的一种实现（另外的ECMAScript方言还有Jscript和ActionScript）。日常场合，这两个词是可以互换的。</p>
+<h2 id="ES6与ECMAScript-2015的关系"><a href="#ES6与ECMAScript-2015的关系" class="headerlink" title="ES6与ECMAScript 2015的关系"></a>ES6与ECMAScript 2015的关系</h2><p>媒体里面经常可以看到”ECMAScript 2015“这个词，它与ES6是什么关系呢？</p>
+<p>2011年，ECMAScript 5.1版发布后，就开始制定6.0版了。因此，”ES6”这个词的原意，就是指JavaScript语言的下一个版本。</p>
+<p>但是，因为这个版本引入的语法功能太多，而且制定过程当中，还有很多组织和个人不断提交新功能。事情很快就变得清楚了，不可能在一个版本里面包括所有将要引入的功能。常规的做法是先发布6.0版，过一段时间再发6.1版，然后是6.2版、6.3版等等。<br>
+        <p class="article-more-link">
+          <a  href="/2016/10/25/ECMAScript 6简介/#more">more >></a>
+        </p>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      <a href="/2016/10/25/ECMAScript 6简介/" class="archive-article-date">
+  	<time datetime="2016-10-25T00:45:29.000Z" itemprop="datePublished"><i class="icon-clock"></i>2016-10-25</time>
+</a>
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags"></i>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ECMAScript-6/">ECMAScript 6</a></li></ul>
+	</div>
+
       
 
       <div class="clearfix"></div>
@@ -322,7 +515,7 @@ MathJax.Hub.Queue(function() {
     
     	<section class="tools-section tools-section-tag">
     			<div class="widget tagcloud" id="js-tagcloud">
-    				<a href="/tags/markdown/" style="font-size: 10px;">markdown</a>
+    				<a href="/tags/ECMAScript-6/" style="font-size: 10px;">ECMAScript 6</a>
     			</div>
     	</section>
     
